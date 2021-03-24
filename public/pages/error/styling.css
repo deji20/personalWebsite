@@ -1,0 +1,9 @@
+#errorBox{
+    color:white;
+    margin:0 30%;
+    font-family: Adam;
+}
+
+#errorBox p{
+    line-height: 25px;
+}

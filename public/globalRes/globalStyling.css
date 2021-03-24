@@ -1,0 +1,32 @@
+@font-face {
+    font-family: 'Adam';
+    src: url("/global/fonts/ADAM.otf");
+}
+
+body, html{
+    margin:0;
+    padding:0;
+    height:100%;
+    width:100%;
+    font-family: "Adam";
+    letter-spacing: 2px;
+    overflow: hidden;
+}
+
+.background{
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("/global/images/background.png");
+    height: 100%;
+    width:100%;
+    z-index:-100;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: absolute;
+}
+
+.center{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}

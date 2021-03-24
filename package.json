@@ -1,0 +1,13 @@
+{
+    "name": "website",
+    "description": "my Personal website migrated to node from java spring",
+    "authors": "Deji ehinlanwo",
+    "version": "1.0.0",
+    "main": "pathToMain",
+    "dependencies": {
+        "axios": "^0.21.1",
+        "dotenv": "^8.2.0",
+        "express": "^4.17.1",
+        "formdata": "^0.10.4"
+    }
+}
