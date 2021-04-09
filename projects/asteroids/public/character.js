@@ -36,7 +36,7 @@ class Character{
             angle.y *= 20;
             let shot = Bodies.circle(this.body.position.x-angle.x*5, this.body.position.y-angle.y*5, 10, {
                 label:"bullet",
-                density:1, 
+                density:1.5, 
             },5);
 
             angle.x = -angle.x;
