@@ -20,8 +20,8 @@ class Character{
 
     move = (speed) => {
         let angle = this.getAngleVector();
-        angle.x = -speed * (angle.x * 0.01);
-        angle.y = -speed * (angle.y * 0.01);
+        angle.x = -speed * (angle.x * 0.02);
+        angle.y = -speed * (angle.y * 0.02);
         Body.applyForce(this.body, this.body.position, angle)
     }
     
