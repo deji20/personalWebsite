@@ -1,0 +1,21 @@
+doctype html
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(http-equiv="X-UA-Compatible", content="IE=edge")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        link(rel="stylesheet" type="text/css" href="/clientLibraries/tailwind.css")
+        link(rel="stylesheet" type="text/css" href="/noted/styling/sections.css")
+        script(src="https://code.jquery.com/jquery-3.6.0.min.js", integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=", crossorigin="anonymous")
+        script(src="/noted/javascript/navBar.js")
+        title=notebook.displayName
+
+    body(class="bg-gray-700 w-full")
+        div(class="flex flex-row flex-nowrap w-full")
+            div(id="navbar" class="w-1/3 flex flex-row flex-nowrap")
+                nav(id="sections", class="w-1/2 relative divide-y-1 h-screen overflow-y-auto bg-blue-900 shadow-lg")
+                    img(src="/noted/images/content.png" class="mx-auto h-10 object-scale-down")
+                nav(id="notes", class="w-1/2 relative divide-y-1 h-screen bg-blue-900 shadow-lg overflow-y-auto hidden")
+                    div(class="bg-gray-800 border-black content-center text-center w-full text-white shadow-lg")
+            div(class="w-full h-screen")
+                iframe(id="content", frameborder="0", class="h-full w-full")

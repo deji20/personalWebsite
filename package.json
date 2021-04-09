@@ -4,10 +4,22 @@
     "authors": "Deji ehinlanwo",
     "version": "1.0.0",
     "main": "pathToMain",
+    "scripts": {
+        "start-dev": "postcss public/clientLibraries/tailwindSettings.css -o public/clientLibraries/tailwind.css; ENVIRONMENT=development nodemon app.js"
+    },
     "dependencies": {
         "axios": "^0.21.1",
         "dotenv": "^8.2.0",
         "express": "^4.17.1",
-        "formdata": "^0.10.4"
+        "formdata": "^0.10.4",
+        "matter-js": "^0.16.1",
+        "pug": "^3.0.2"
+    },
+    "devDependencies": {
+        "autoprefixer": "^10.2.5",
+        "postcss": "^8.2.9",
+        "postcss-cli": "^8.3.1",
+        "postcss-import": "^14.0.1",
+        "tailwindcss": "^2.0.4"
     }
 }
