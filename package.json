@@ -6,7 +6,7 @@
     "main": "pathToMain",
     "scripts": {
         "start-dev": "postcss public/clientLibraries/tailwindSettings.css -o public/clientLibraries/tailwind.css; ENVIRONMENT=development nodemon app.js",
-        "start":"PORT=80 node app.js"
+        "start":"node app.js"
     },
     "dependencies": {
         "axios": "^0.21.1",
