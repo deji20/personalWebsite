@@ -4,18 +4,19 @@ Runner=Matter.Runner,
 Events=Matter.Events,
 Composite=Matter.Composite;
 
-const area = 1500;
+const area = 2000;
 
 let player;
 let engine;
 let render;
 
 $(document).ready(startUp);
-
+//performs when 
 function startUp(){
     setup()
     setControls();
     let score = scoreboard();
+
     render.canvas.height=$(window).height();
     render.canvas.width=$(window).width();
     render.options.height=$(window).height();
@@ -30,6 +31,7 @@ function startUp(){
         }
     })
 }
+
 function setup(){
     engine = Engine.create();
     engine.world.gravity.y=0;
@@ -38,11 +40,10 @@ function setup(){
         element:document.body,
         engine:engine,
         options:{
-            width:$(window).height(),
-            height:$(window).width(),
-            wireframes:false
+            wireframes:true
         }
     });
+
     $(window).on("resize", () => {
         render.canvas.height=$(window).height();
         render.canvas.width=$(window).width();
@@ -51,21 +52,21 @@ function setup(){
     })
 
     player=new Character(400, 400, 3);
-    const arena = new Arena(area, 100);
+    const arena = new Arena(area, 200);
 
     Composite.add(engine.world, [player.body, arena.createWalls()]);
 
     Render.run(render);
     Engine.run(engine);
 
-    setInterval(arena.spawnAsteroid, 500)
+    setInterval(arena.spawnAsteroid, 300)
     gameloop();
 }
 
 function gameloop(){
     function update(){
         Engine.update(engine);
-        Render.lookAt(render, player.body, {x:500, y:500})
+        Render.lookAt(render, player.body, {x:700, y:700})
         checkKeys();
         requestAnimationFrame(update);
     }

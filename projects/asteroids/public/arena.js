@@ -40,15 +40,17 @@ class Arena{
             y:Math.sin(angle) * this.area,
         }
         
+        //get movement direction and vector
         let direction = {}
-        if(spawnPoint.x < 0){ direction.x = Math.random()*2; 
-        }else{
-            direction.x = -(Math.random())*2;
-        }
-        if(spawnPoint.y < 0){ direction.y = Math.random()*2; 
-        }else{ 
-            direction.y = -(Math.random())*2;
-        }
+        let baseSpeed = 1.5;
+        let maxSpeed = 4
+        if(spawnPoint.x < 0) direction.x = baseSpeed+(Math.random()*maxSpeed); 
+        else direction.x = -baseSpeed-(Math.random()* maxSpeed);
+        
+        if(spawnPoint.y < 0) direction.y = baseSpeed+Math.random()*maxSpeed; 
+        else direction.y = -baseSpeed-(Math.random()*maxSpeed);
+
+        let shape = 3 + Math.floor(Math.random()*10)
         let asteroid = Body.create({
             label:"asteroid",
             collisionFilter: {
@@ -57,6 +59,14 @@ class Arena{
             },
             parts:[
                 Bodies.polygon(spawnPoint.x,spawnPoint.y, 5,100,{
+                    density:0.01,
+                    lable:"asteroid",
+                    collisionFilter: {
+                        group:-2,
+                        mask:1,
+                    }
+                }),
+                Bodies.polygon(spawnPoint.x,spawnPoint.y, shape,100,{
                     density:0.01,
                     lable:"asteroid",
                     collisionFilter: {
