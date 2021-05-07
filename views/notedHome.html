@@ -1,0 +1,22 @@
+<script src="noted/javascript/notedApi.js"></script>
+<script src="noted/javascript/notedNavigation.js"></script>
+<script src="noted/javascript/noted.js"></script>
+<link href="noted/styling/sections.css" rel="stylesheet" type="text/css">
+
+<div class="h-screen w-full overflow-auto flex flex-col">
+    <div id="navList" class="h-6 bg-gray-700 flex-initial text-center text-white"></div>
+    <div class="h-full flex flex-row">
+        <div id="navbar" class="w-56 transition-all duration-600 flex flex-row flex-nowrap">
+            <nav id="navContent" class="relative -left-60 transition-all shadow-lg duration-600 w-full overflow-y-auto bg-blue-900">
+                <div class="h-10 sticky">
+                    <img onclick="toggleNav()" src="noted/images/content.png" class="cursor-pointer mx-auto h-full object-scale-down"/>
+                </div>
+                <div id="navItems" class="divide-y-1"></div>
+            </nav>
+        </div>
+        <div class="relative col-span-4 flex flex-row flex-nowrap w-full" id="wrapper">
+            <h id="title" class="transition-all duration-1000 opacity-0 absolute text-gray-600 text-xl top-6 left-20"></h>
+            <iframe id="content", frameborder="0", class="h-full w-full"></iframe>
+        </div>
+    </div>
+</div>

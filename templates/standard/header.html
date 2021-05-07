@@ -5,6 +5,24 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="/clientLibraries/tailwind.css"/>
+    <link rel="stylesheet" type="text/css" href="/global/fonts/fonts.css"/>
+    <link rel="stylesheet" type="text/css" href="/global/globalStyling.css"/>
     <title>Deji's Site</title>
 </head>
-<body style="margin:0; padding:0">
+<body class="m-0 p-0">
+    <nav class="z-10 fixed flex w-full h-10 items-center justify-evenly text-white border-black bg-gray-800">
+        <div class="h-full">
+            <a href="/" class="h-full flex flex-row items-center">
+                <img class="h-full" src="/global/images/assets/home.png"/>
+                <span> HOME</span>
+            </a>
+        </div>
+        <div class="flex w-full justify-evenly text-gray-300">
+            <a href="/projects" class="hover:text-white"><span>Projects</span></a>
+            <a href="/skills" class="hover:text-white"><span>Skills</span></a>
+            <a href="/contacts" class="hover:text-white"><span>Contacts</span></a>
+        </div>
+    </nav>
+    <div class="min-h-screen flex pt-10">
+    

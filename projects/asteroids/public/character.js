@@ -10,9 +10,9 @@ class Character{
             density:1,
             restitution:0.8,
             parts:[
-                Bodies.polygon(startX,startY,3,50,{label:"player"}),
-                Bodies.polygon(startX,startY,5,25,{label:"player"}),
-                Bodies.rectangle(startX-35,startY,45,10,{label:"player"})
+                Bodies.polygon(startX,startY,3,50,{label:"player", collisionFilter:{group:-1}}),
+                Bodies.polygon(startX,startY,5,25,{label:"player", collisionFilter:{group:-1}}),
+                Bodies.rectangle(startX-35,startY,45,10,{label:"player", collisionFilter:{group:-1}})
             ],
             
         });

@@ -2,9 +2,10 @@ const Engine=Matter.Engine,
 Render=Matter.Render,
 Runner=Matter.Runner,
 Events=Matter.Events,
+World=Matter.World,
 Composite=Matter.Composite;
 
-const area = 2000;
+const area = 5000;
 
 let player;
 let engine;
@@ -25,6 +26,7 @@ function startUp(){
     Events.on(engine, "collisionStart", (colided) => {
         bodyA = colided.pairs[0].bodyA;
         bodyB = colided.pairs[0].bodyB;
+        
         if(bodyA.label === "player" || bodyB.label === "player"){
             Render.stop(render)
             clearInterval(score);
@@ -35,13 +37,28 @@ function startUp(){
 function setup(){
     engine = Engine.create();
     engine.world.gravity.y=0;
+    var gridBackground = Bodies.rectangle(0, 0, area, {
+        isStatic: true,
+        isSensor: true,
+        collisionFilter:{
+            group:-1
+        },
+        render: {
+            sprite: {
+                texture: "assets/grid.png",
+                xScale: 10,
+                yScale:10
+            }
+        }
+    });
+    World.add(engine.world, gridBackground);
 
     render = Render.create({
-        element:document.body,
+        element:$("#game")[0],
         engine:engine,
         options:{
-            wireframes:true
-        }
+            wireframes:false,
+        },
     });
 
     $(window).on("resize", () => {
@@ -64,6 +81,8 @@ function setup(){
 }
 
 function gameloop(){
+    ctx = render.context;
+
     function update(){
         Engine.update(engine);
         Render.lookAt(render, player.body, {x:700, y:700})
@@ -104,4 +123,29 @@ function checkKeys(){
     if(keys["d"]) player.rotate(speed);
     if(keys["a"]) player.rotate(-speed);
     if(keys["s"]) player.move(-speed);
+}
+
+var drawGrid = function(w, h) {
+    const ctx = render.canvas.context;
+    render.canvas.width;
+    render.canvas.height;
+    
+    var data = '<svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg"> \
+        <defs> \
+            <pattern id="smallGrid" width="8" height="8" patternUnits="userSpaceOnUse"> \
+                <path d="M 8 0 L 0 0 0 8" fill="none" stroke="gray" stroke-width="0.5" /> \
+            </pattern> \
+            <pattern id="grid" width="80" height="80" patternUnits="userSpaceOnUse"> \
+                <rect width="80" height="80" fill="url(#smallGrid)" /> \
+                <path d="M 80 0 L 0 0 0 80" fill="none" stroke="gray" stroke-width="1" /> \
+            </pattern> \
+        </defs> \
+        <rect width="100%" height="100%" fill="url(#smallGrid)" /> \
+    </svg>';
+    
+    img.onload = function () {
+      ctx.drawImage(img, 0, 0);
+      DOMURL.revokeObjectURL(url);
+    }
+    img.src = url;
 }

@@ -8,27 +8,12 @@ class Arena{
     createWalls = () => {
         return Body.create({
             isStatic:true,
-            collisionFilter:{
-                group:-2,
-                mask:1,
-            },
+            isSensor:true,
             parts:[
-                Bodies.rectangle(this.area/2,0,50, this.area,{isStatic:true, restitution:0.8, render:{fillStyle:"#007ACC"}, collisionFilter: {
-                    group:-2,
-                    mask:1,
-                }}),
-                Bodies.rectangle(0,-this.area/2,this.area,50,{isStatic:true, restitution:0.8, render:{fillStyle:"#007ACC"},collisionFilter: {
-                    group:-2,
-                    mask:1,
-                }}),
-                Bodies.rectangle(0,this.area/2,this.area,50,{isStatic:true, restitution:0.8, render:{fillStyle:"#007ACC"},collisionFilter: {
-                    group:-2,
-                    mask:1,
-                }}),
-                Bodies.rectangle(-this.area/2,0,50,this.area,{isStatic:true, restitution:0.8, render:{fillStyle:"#007ACC"},collisionFilter: {
-                    group:-2,
-                    mask:1,
-                }}),
+                Bodies.rectangle(this.area/2,0,50, this.area,{isStatic:true, isSensor:true, restitution:0.8, render:{fillStyle:"#007ACC"}}),
+                Bodies.rectangle(0,-this.area/2,this.area,50,{isStatic:true, isSensor:true, restitution:0.8, render:{fillStyle:"#007ACC"}}),
+                Bodies.rectangle(0,this.area/2,this.area,50,{isStatic:true, isSensor:true, restitution:0.8, render:{fillStyle:"#007ACC"}}),
+                Bodies.rectangle(-this.area/2,0,50,this.area,{isStatic:true, isSensor:true, restitution:0.8, render:{fillStyle:"#007ACC"}}),
             ]
         })
     }
@@ -42,8 +27,8 @@ class Arena{
         
         //get movement direction and vector
         let direction = {}
-        let baseSpeed = 1.5;
-        let maxSpeed = 4
+        let baseSpeed = 2;
+        let maxSpeed = 5;
         if(spawnPoint.x < 0) direction.x = baseSpeed+(Math.random()*maxSpeed); 
         else direction.x = -baseSpeed-(Math.random()* maxSpeed);
         
@@ -53,26 +38,14 @@ class Arena{
         let shape = 3 + Math.floor(Math.random()*10)
         let asteroid = Body.create({
             label:"asteroid",
-            collisionFilter: {
-                group:-2,
-                mask:1,
-            },
             parts:[
                 Bodies.polygon(spawnPoint.x,spawnPoint.y, 5,100,{
                     density:0.01,
                     lable:"asteroid",
-                    collisionFilter: {
-                        group:-2,
-                        mask:1,
-                    }
                 }),
                 Bodies.polygon(spawnPoint.x,spawnPoint.y, shape,100,{
                     density:0.01,
                     lable:"asteroid",
-                    collisionFilter: {
-                        group:-2,
-                        mask:1,
-                    }
                 }),
             ]
         });

@@ -1,0 +1,9 @@
+@font-face {
+    font-family: 'Adam';
+    src: url("/global/fonts/ADAM.otf");
+}
+
+body{
+    font-family: "Adam";
+    letter-spacing: 2px;
+}

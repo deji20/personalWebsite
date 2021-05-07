@@ -1,20 +1,20 @@
-const axios = require("axios");
-const accessToken = require("../authentication/accessToken");
-const notebook = require("../models/section");
-
-let config = {
-    headers:{
-        Accept:"application/json"
-    }
-}
+const onenoteApi = require("./onenoteApi");
 
 class notebookRepository{
 
     async getAll(){
         try{
-            let res = await axios.get("https://graph.microsoft.com/v1.0/me/onenote/notebooks/", config);
-            let sections = res.data.value.map((item) => parse(item));
-            return sections
+            let res = await onenoteApi.send("https://graph.microsoft.com/v1.0/me/onenote/notebooks/");
+            return res.data.value;
+        }catch(err){
+            return err;
+        }
+    };
+
+    async getSections(notebookId){
+        try{
+            let res = await onenoteApi.send(`https://graph.microsoft.com/v1.0/users/me/onenote/notebooks/${notebookId}/sections?$select=displayName,id`);
+            return res.data.value;
         }catch(err){
             return err;
         }
@@ -22,20 +22,12 @@ class notebookRepository{
 
     async getById(id){
         try{
-            let res = await axios.get(`https://graph.microsoft.com/v1.0/users/me/onenote/notebooks/${id}`, config)
+            let res = await onenoteApi.send(`https://graph.microsoft.com/v1.0/users/me/onenote/notebooks/${id}`)
             return res.data;
         }catch(err){
             return err;
         }
     };
-
-    set accessToken(token){
-        config.headers.Authorization = `${token.token_type} ${token.access_token}`
-    }
-}
-
-function parse(unparsed){
-    return new notebook(unparsed.displayName, unparsed.id);
 }
 
 module.exports = new notebookRepository();
