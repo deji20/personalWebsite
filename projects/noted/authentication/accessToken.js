@@ -1,7 +1,7 @@
 const axios = require("axios");
 const querystring = require("querystring");
 const router = require("express").Router();
-const onenoteConfig = require(`${__basedir}/appsetting.development.json`).Noted.OnenoteApi;
+const onenoteConfig = require(`${__basedir}/appsettings.development.json`).Noted.OnenoteApi;
 const fs =  require("fs")
 
 

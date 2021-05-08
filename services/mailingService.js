@@ -1,6 +1,6 @@
 "use strict";
 const nodemailer = require("nodemailer");
-const mailSettings = require(`${__basedir}/appsetting.development.json`).MailSettings;
+const mailSettings = require(`${__basedir}/appsettings.development.json`).MailSettings;
 
   
 const transporter = nodemailer.createTransport({

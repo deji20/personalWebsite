@@ -1,0 +1,26 @@
+{
+    "MailSettings":{
+        "name":
+        "subject":
+        "host":
+        "sender":{
+            "user":
+            "pass":
+        },
+        "receiver":{
+            "address":
+        }
+    },
+    "Noted":{
+        "OnenoteApi":{
+            "ClientId":
+            "ClientSecret":
+            "ClientSecretId":
+            "Tenant":
+            "AuthEndpoint":
+            "TokenEndpoint":
+            "RefreshEndpoint":
+            "RedirectUri":
+        }
+    }
+}

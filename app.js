@@ -6,8 +6,17 @@ const fs = require("fs");
 global.__basedir = __dirname; 
 
 //importing routers
-const projects = require("./routes/projectsRouter");
-const contacts = require("./routes/contactsRouter");
+const projectsRouter = require("./routers/projectsRouter");
+const contactsRouter = require("./routers/contactsRouter");
+const skillsRouter = require("./routers/skillsRouter");
+const recommendationsRouter = require("./routers/recommendationsRouter");
+const educationRouter = require("./routers/educationRouter")
+//adding routers
+app.use("/projects", projectsRouter);
+app.use("/contacts", contactsRouter);
+app.use("/skills", skillsRouter);
+app.use("/recommendations", recommendationsRouter);
+app.use("/education", educationRouter);
 
 //reading template html files
 const template = require("./templates/templates").standard;
@@ -20,10 +29,6 @@ app.use(express.json());
 app.get("/", (req, res) => {
     res.send(template(homeHtml));
 });
-
-//adding routers
-app.use("/projects", projects);
-app.use("/contacts", contacts);
 
 //setting static files
 app.use("/", express.static(path.join(__dirname, "public/")));
