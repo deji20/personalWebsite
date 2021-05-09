@@ -1,52 +1,89 @@
-    <link href="/pages/index/styling.css" rel="stylesheet" type="text/css"/>
-
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="/pages/index/Javascript/indexJS.js"></script>
     <script src="/projects/clock/clock.js"></script>
+    <script src="/pages/skills/javascript/skills.js"></script>
+    <script src="/pages/recommendations/javascript/recommendations.js"></script>
 
     <canvas id="clock" height="100" width="100" style="position: absolute;"></canvas>
 	<div class="background"></div>
-    <nav class="mainGroup" id="Professional">
-        <h1 class="groupName">Professional</h1>
-        <div class="entry">
-            <span><h1>CV</h1></span>
+    
+<div class="flex w-full flex-col justify-center items-center">
+    <div id="heroHeader" class="flex my-16 px-40 w-full h-full justify-center items-center">
+        <div class="flex flex-row">
+            <div class="flex flex-col mx-6">
+                <h1 class="text-4xl">Deji Ehinlanwo</h1>
+                <h1 class="text-2xl text-gray-500">Computer Science student</h1>
+                <p class="text-xl">This is my personal website, feel free to look around and check out my various projects.</p>
+            </div>
+            <img id="slideshow" class="object-fit h-36 w-36 transition-all duration-1000 rounded-full" />
         </div>
-        <a href="https://github.com/deji20"><div class="entry">
-            <h2>Github</h2>
-            <img src="pages/index/images/Professional/github.png"/>
-        </div></a>
-    </nav>
-
-    <nav class="mainGroup" id="Projects">
-        <h1 class="groupName">Projects</h1>
-        <a href="/2Seconds"><div class="entry">
-            <span><h1>2 Sec</h1></span>
-        </div></a>
-        <a href="/noted"><div class="entry">
-            <span><h1>Noted</h1></span>
-        </div></a>
-    </nav>
-
-    <nav class="mainGroup" id="contact">
-        <h1 class="groupName">Contact Info</h1>
-        <a href="https://www.facebook.com/deji.ehinlanwo/"><div class="entry">
-            <h2>Facebook</h2>
-            <img class="pic" src="/pages/index/images/Contact/Facebook.png"/>
-        </div></a>
-        <a href="https://www.instagram.com/dejifraliss/"><div class="entry">
-            <h2>Instagram</h2>
-            <img src="/pages/index/images/Contact/Instagram.png"/>
-        </div></a>
-        <a href="https://www.linkedin.com/in/dejiehinlanwo/"><div class="entry">
-            <h2>LinkedIn</h2>
-            <img src="/pages/index/images/Contact/linkedIn.png"/>
-        </div></a>
-    </nav>
-
-    <div id="nav">
-        <div class="navMark"></div>
-        <div class="navMark"></div>
-        <div class="navMark"></div>
     </div>
-    <div class="navigation" id="up" onclick="change(-1)"><img src="/global/images/assets/arrow.png"/></div>
-    <div class="navigation" id="down" onclick="change(1)"><img src="/global/images/assets/arrow.png"/></div>
+
+    <div class="flex flex-col justify-center items-center w-full my-16 h-48 text-center">
+        <div class="w-2/3 rounded-t-md bg-red-800 bg-opacity-50">
+            <a id="sectionName" class="text-xl">Projects</a>
+        </div>
+        <div class="h-full w-2/3 overflow-hidden">
+            <nav class="m-auto bg-black bg-opacity-30 rounded-b-lg flex items-center justify-center mainGroup h-full transition-all duration-1000" id="Professional">
+                <div class="flex flex-row w-full justify-evenly">
+                    <a href="/projects/noted">
+                        <h1>Noted</h1>
+                    </a>
+                    <a href="/projects/asteroids">
+                        <h2>Asteroids</h2>
+                    </a>
+                </div>
+            </nav>
+            <nav class="m-auto bg-black bg-opacity-30 rounded-b-lg flex flex-col items-center justify-center mainGroup h-full transition-all duration-1000" id="Professional">
+                <div class="flex flex-row w-full justify-evenly">
+                    <div class="flex flex-col">
+                        <div class="relative skill w-24 h-24">
+                            <input class="proficiency" type="hidden" value="92">
+                            <canvas class="canvas"></canvas>
+                            <img class="absolute h-1/3 top-1/3 left-1/3" src="/pages/skills/images/java.png"/>
+                        </div>
+                        <p>java</p>
+                    </div>
+                    <div class="flex flex-col">                        
+                        <div class="relative skill w-24 h-24">
+                            <input class="proficiency" type="hidden" value="89">
+                            <canvas class="canvas"></canvas>
+                            <img class="absolute h-1/3 top-1/3 left-1/3" src="/pages/skills/images/js.png"/>
+                            <p>javascript</p>
+                        </div>
+                    </div>
+                </div>
+                <a href="/skills">See More!</a>
+            </nav>
+            <nav class="m-auto bg-black bg-opacity-30 rounded-b-lg flex items-center justify-center mainGroup h-full transition-all duration-1000" id="Professional">
+                <div class="flex flex-row w-full justify-evenly cursor-pointer">
+                    <a href="/contact">
+                        <h1>Wanna contact me?</h1>
+                        <p>Head on over to the contacts page and write me a message!</p>
+                    </a>
+                </div>
+            </nav>
+
+            <nav class="m-auto bg-black bg-opacity-30 rounded-b-lg flex items-center justify-center mainGroup h-full transition-all duration-1000" id="Professional">
+                <div class="flex w-full justify-evenly">
+                    <div id="recommendationExample" class="flex flex-row cursor-pointer">
+                        <a href="/recommendations">
+                            <h1>No recommendations just yet</h1>
+                            <p>click me, if you want to write me one! :)</p>
+                        </a>
+                    </div>
+                </div>
+            </nav>
+        </div>
+
+        <div id="nav">
+            <div class="navMark"></div>
+            <div class="navMark"></div>
+            <div class="navMark"></div>
+        </div>
+        <div class="absolute flex flex-col bottom-4 right-4">
+            <div onclick="change(-1)"><img class="transform rotate-180 h-10 w-10 object-contain" src="/global/images/assets/arrow.png"/></div>
+            <div onclick="change(1)"><img class="h-10 w-10 object-contain" src="/global/images/assets/arrow.png"/></div>
+        </div>
+    </div>
+</div>

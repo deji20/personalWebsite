@@ -1,7 +1,7 @@
 const axios = require("axios");
 const querystring = require("querystring");
 const router = require("express").Router();
-const onenoteConfig = require(`${__basedir}/appsettings.development.json`).Noted.OnenoteApi;
+const onenoteConfig = require(`${__basedir}/appsettings.json`).Noted.OnenoteApi;
 const fs =  require("fs")
 
 
@@ -24,7 +24,8 @@ router.getToken = async () => {
     fs.writeFileSync(__dirname +"/token.json", JSON.stringify(token));
     return token;
   }else{
-    throw new Error("Invalid Token");
+    console.log("hello");
+    throw Error("Token can't be found, or it is expired and can't be refreshed");
   }
 }
 router.get("/", async (req, res) => {
@@ -39,7 +40,7 @@ router.get("/success", async (req, res) => {
     
     response.data.expiration_time = Date.now() + response.data.expires_in * 1000
     fs.writeFileSync(__dirname +"/token.json", JSON.stringify(response.data));
-    res.redirect("/noted");
+    res.redirect("/projects/noted");
 });
 
 

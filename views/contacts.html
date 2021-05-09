@@ -1,17 +1,17 @@
 <div class="background"></div>
 <div class="flex py-20 w-full">
-    <div class="w-1/12 grid grid-rows-4 text-white text-center place-items-center justify-center rounded-lg bg-blue-700 bg-opacity-25">
+    <div class="w-1/12 grid grid-rows-4 text-white text-center place-items-center justify-center rounded-r-xl shadow-xl bg-blue-700 bg-opacity-25">
         <h1 class="text-sm">Social Media</h1>
         <a href="https://www.facebook.com/deji.ehinlanwo/"><img class="w-full" src="/pages/contacts/images/Facebook.png"/></a>
         <a href="https://www.instagram.com/dejifraliss/"><img class="w-full" src="/pages/contacts/images/Instagram.png"/></a>
         <a href="https://www.linkedin.com/in/dejiehinlanwo/"><img class="w-full" src="/pages/contacts/images/linkedIn.png"/></a>
     </div>
 
-    <div class="flex flex-1 justify-center">
-        <form id="contactForm" class="w-4/6 flex flex-col p-10 rounded-lg bg-blue-700 bg-opacity-25">
-            <div class="text-white text-center">
-                <h1>Contact Me!</p>
-            </div>
+    <div class="w-5/6 m-auto flex flex-col justify-center">
+        <div class="text-white text-center py-3 bg-opacity-50 bg-red-700 rounded-t-lg">
+            <h1>Contact Me!</h1>
+        </div>
+        <form id="contactForm" class="flex flex-col flex-1 p-10 rounded-b-lg shadow-xl bg-blue-700 bg-opacity-50">
             <div class="mb-2 flex flex-col">
                 <label for="emailAddress" class=" text-white">Email</label>
                 <input class="text-xs rounded-lg p-2 transition-all duration-300 focus:outline-none focus:shadow-2xl focus:ring-4 focus:ring-purple-600 text-black" placeholder="Email Address" name="emailAddress" required id="emailAddress" type="email"/>
@@ -23,7 +23,7 @@
             </div>
             <div class="mb-2 flex flex-1 flex-col w-full">
                 <label class="text-white">Message</label>
-                <textarea class="flex-1 text-xs w-full rounded-lg p-2  duration-300 focus:outline-none transition-all focus:shadow-2xl focus:ring-4 focus:ring-purple-600 text-black" id="message" name="message" required placeholder="Message"></textarea>
+                <textarea class="text-xs w-full rounded-lg p-2  duration-300 focus:outline-none transition-all focus:pb-32 focus:shadow-2xl focus:ring-4 focus:ring-purple-600 text-black" id="message" name="message" required placeholder="Message"></textarea>
             </div>
 
             <input id="submitButton" class="rounded-lg transition-all hover:bg-blue-700 cursor-pointer text-gray-700" type="submit" value="send"/>

@@ -5,6 +5,9 @@ const fs = require("fs");
 //setting a base directory for all routers to reference  
 global.__basedir = __dirname; 
 
+
+app.use(express.json());
+
 //importing routers
 const projectsRouter = require("./routers/projectsRouter");
 const contactsRouter = require("./routers/contactsRouter");
@@ -13,7 +16,7 @@ const recommendationsRouter = require("./routers/recommendationsRouter");
 const educationRouter = require("./routers/educationRouter")
 //adding routers
 app.use("/projects", projectsRouter);
-app.use("/contacts", contactsRouter);
+app.use("/contact", contactsRouter);
 app.use("/skills", skillsRouter);
 app.use("/recommendations", recommendationsRouter);
 app.use("/education", educationRouter);
@@ -22,8 +25,6 @@ app.use("/education", educationRouter);
 const template = require("./templates/templates").standard;
 const homeHtml = fs.readFileSync(path.join(__dirname, "views/index.html")).toString()
 const errorHtml = fs.readFileSync(path.join(__dirname, "views/error.html")).toString()
-
-app.use(express.json());
 
 //home
 app.get("/", (req, res) => {

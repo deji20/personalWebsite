@@ -1,50 +1,54 @@
-var a = 0;
+let a = 0;
 
 $(document).ready(function(){
-    slide(10,50, $(".mainGroup")[0]);
-    $(".navMark")[0].style.opacity = "1";
+    const basePath = "/global/images/backgrounds";
+    slideShow($("#slideshow"), [`${basePath}/1.jpg`, `${basePath}/2.jpg`, `${basePath}/3.jpg`, `${basePath}/4.jpg`,`${basePath}/5.jpg`]);
 
-    $(".navMark").click(function(){
-        var nav = $("#nav").children();
-        for(var i = 0; i < nav.length; i++){
-            if(nav[i] === this){
-                change(i - a);
-            }
-        }
-    });
-    $("body").bind('mousewheel', function(e){
-        if(e.originalEvent.wheelDelta < 0) {
-            change(1);
-        }else {
-            change(-1);
-        }
-    });
+    setInterval(() => {
+        change(1);
+    }, 5000);
+
+    getRecommendation();
 });
 
+async function getRecommendation(){
+    let recs = await fetchRecommendations();
+    if(recs.recommendations && recs.recommendations.length){
+        $("#recommendationExample").empty().append(createRecommendationElement(recs.recommendations[0]));
+    }
+}
 
+function slideShow(element, pictures){
+    let index = 0;
+    element.attr('src',`${pictures[index]}`)
+
+    setInterval(() => {
+        element.attr('src',`${pictures[index]}`)
+        index++;
+        if(index === pictures.length){
+            index = 0;
+        }
+    }, 10000);
+}
+
+const sections = [
+    {name:"Projects", link:"/projects"}, 
+    {name:"Skills", link:"/skills"}, 
+    {name:"Contact", link:"/contact"},
+    {name:"Recommendations", link:"/recommmendations"}
+]
 function change(show){
     var group = $(".mainGroup");
+    group.css("opacity", "0");
 
-    if(show != 0) {
-        if (a + show < group.length && a + show >= 0) {
-            //sets slide direction based on list order
-            if (show < 0) {
-                startIn = -20;
-                endOut = 130;
-            } else {
-                startIn = 130;
-                endOut = -20;
-            }
+    a += show;
+    a = a % group.length;
+    
+    $("#sectionName").text(sections[a].name).attr("href", sections[a].link);
+    element = $(group[a]) 
+    element[0].scrollIntoView({behavior: "smooth", block: "end"});
+    element.css("opacity", "100");
 
-            //slides out old element
-            $(".navMark")[a].style.opacity = "0.4";
-            slide(50, endOut, group[a]);
-            a += show;
-            //slides in new element
-            $(".navMark")[a].style.opacity = "1";
-            slide(startIn, 50, group[a]);
-        }
-    }
 }
 
 function slide(start, end, object){
@@ -58,13 +62,13 @@ function slide(start, end, object){
         else{fadeRatio = 1/(start - end);}
 
     //determine if the object is on it's way in or out
-    var out = object.style.display === "block";
+    var out = object.style.display === "flex";
 
     //sets the proper opacity and display for an object coming in
     if(!out){
         fade = 0;
         object.style.opacity = fade;
-        object.style.display = "block";
+        object.style.display = "flex";
     }
 
     var slide = setInterval(function(){

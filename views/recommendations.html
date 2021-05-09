@@ -1,2 +1,37 @@
+<script src="/pages/recommendations/javascript/recommendations.js"></script>
+
 <div class="background"></div>
-<
+<div class="flex flex-col w-full justify-center items-center">
+    <div id="recommendations"class="flex flex-wrap justify-evenly">
+        <h1>
+            None Yet :(
+        </h1>
+    </div>
+    <div class="flex flex-col justify-center w-4/5 my-12">
+
+        <div class="text-white text-center py-3 bg-opacity-50 bg-red-700 rounded-t-lg">
+            <h1>You can write me one if you want!</h1>
+        </div>
+        <form id="recommendationForm" class="flex flex-col p-10 rounded-b-lg shadow-xl bg-blue-700 bg-opacity-30">
+            <div class="mb-2 flex flex-1 flex-row justify-evenly">
+                <div class="flex flex-col mr-1">
+                    <label class="text-white">By:</label>
+                    <input class="text-xs rounded-lg p-2 transition-all duration-300 focus:outline-none focus:shadow-2xl focus:ring-4 focus:ring-purple-600 text-black" id="author" required name="author" placeholder="Who are you?" type="text"/>
+                </div>
+                <div class="flex flex-1 flex-col">
+                    <label class="text-white">Relation:</label>
+                    <input class="text-xs rounded-lg p-2 transition-all duration-300 focus:outline-none focus:shadow-2xl focus:ring-4 focus:ring-purple-600 text-black" id="relation" required name="relation" placeholder="How do you know me?" type="text"/>
+                </div>
+            </div>
+            <div class="mb-2 flex flex-1 flex-col">
+                <label class="text-white ">Recommendation</label>
+                <input class="text-xs rounded-lg p-2 transition-all mb-1 duration-300 focus:outline-none focus:shadow-2xl focus:ring-4 focus:ring-purple-600 text-black" placeholder="Headline" name="headline" required id="headline" type="text"/>
+                <textarea class="text-xs w-full rounded-lg p-2  duration-300 focus:pb-32 focus:outline-none transition-all focus:shadow-2xl focus:ring-4 focus:ring-purple-600 text-black focus:h-52" id="recommendationText" name="recommendationText" required placeholder="Recommendation"></textarea>
+            </div>
+            
+
+            <input id="submitButton" class="rounded-lg transition-all hover:bg-blue-700 cursor-pointer text-gray-700" type="submit" value="send"/>
+        </form>
+    </div>
+    
+</div>

@@ -1,5 +1,5 @@
 .background{
-    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("/global/images/background.png");
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("/global/images/backgrounds/background.png");
     height: 100%;
     width:100%;
     z-index:-100;
@@ -11,6 +11,7 @@
 
 body{
     color:white;
+    scroll-behavior: smooth;
 }
 
 .center{

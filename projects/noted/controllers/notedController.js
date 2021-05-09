@@ -24,15 +24,13 @@ router.use("/sync", async (req, res) => {
 
 //verifying authorization token for accessing onenote api
 router.use("/auth", authorization)
-router.use((req, res, next) => {
+router.use(async (req, res, next) => {
     try{
-        authorization.getToken().then((token) => {
-            onenoteApi.accessToken = token;
-            next();
-        });
+        token = await authorization.getToken();
+        onenoteApi.accessToken = token;
+        next();
     }catch(err){
-        console.log(err);
-        res.redirect("/noted/auth")
+        res.redirect("/projects/noted/auth")
     }
 })
 

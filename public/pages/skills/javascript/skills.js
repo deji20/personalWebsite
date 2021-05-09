@@ -22,7 +22,7 @@ function renderSkill(skill, color){
         let position = getAngle(index);
         
         ctx.moveTo(w/2, h/2);
-        ctx.arc(w/2, h/2, h/2, 0 + Math.PI*1.5, position + Math.PI*1.5);
+        ctx.arc(h/2, h/2, h/2, 0 + Math.PI*1.5, position + Math.PI*1.5);
         ctx.fill();
         index++;
         if(position < endPosition){
