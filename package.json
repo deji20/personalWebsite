@@ -5,7 +5,8 @@
     "version": "1.0.0",
     "main": "pathToMain",
     "scripts": {
-        "start-dev": "postcss public/clientLibraries/tailwindSettings.css -o public/clientLibraries/tailwind.css;PORT=8080 nodemon --ext js,html app.js",
+        "build": "postcss public/clientLibraries/tailwindSettings.css -o public/clientLibraries/tailwind.css",
+        "start-dev": "PORT=8080 nodemon --ext js,html app.js",
         "start": "PORT=80 node app.js"
     },
     "dependencies": {
