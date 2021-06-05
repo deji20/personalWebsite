@@ -22,11 +22,21 @@ function renderSkill(skill, color){
         let position = getAngle(index);
         
         ctx.moveTo(w/2, h/2);
-        ctx.arc(h/2, h/2, h/2, 0 + Math.PI*1.5, position + Math.PI*1.5);
+        ctx.arc(w/2, h/2, h/2, 0 + Math.PI*1.5, position + Math.PI*1.5);
         ctx.fill();
         index++;
         if(position < endPosition){
             requestAnimationFrame(fillSkill);
+        }else{
+            resizer = $("#canResize");
+            $(window).on("resize", () => {
+                let h = canvas.height = resizer.height();
+                let w = canvas.width = resizer.width()/2;
+                
+                ctx.moveTo(w/2, h/2);
+                ctx.arc(w/2, h/2, h/2, 0 + Math.PI*1.5, endPosition + Math.PI*1.5);
+                ctx.fill();
+            })
         }
     }
     requestAnimationFrame(fillSkill);

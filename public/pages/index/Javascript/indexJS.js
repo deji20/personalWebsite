@@ -4,9 +4,9 @@ $(document).ready(function(){
     const basePath = "/global/images/backgrounds";
     slideShow($("#slideshow"), [`${basePath}/1.jpg`, `${basePath}/2.jpg`, `${basePath}/3.jpg`, `${basePath}/4.jpg`,`${basePath}/5.jpg`]);
 
-    setInterval(() => {
+    /*setInterval(() => {
         change(1);
-    }, 5000);
+    }, 5000);*/
 
     getRecommendation();
 });

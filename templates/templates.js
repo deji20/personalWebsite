@@ -8,3 +8,7 @@ const footer = fs.readFileSync(`${__dirname}/standard/footer.html`).toString();
 template.standard = function(body){
     return header + body + footer;
 }
+
+template.tooSecAdmin = function(body){
+    return header + body + footer;
+}

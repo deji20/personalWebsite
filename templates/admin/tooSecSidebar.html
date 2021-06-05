@@ -1,0 +1,45 @@
+<input type="file" id="uploadVid" style="display: none;" />
+<div class="flex flex-shrink bg-gray-900">
+    <button class="m-3 w-10 h-10 bg-indigo-900 rounded-full" type="button" onclick="document.getElementById('uploadVid').click();">
+        <img src="/global/images/assets/plus.png" class="object-fill" />
+    </button>
+</div>
+
+<script>
+
+$("#uploadVid").on("change", async (e) => {
+    let data = await toBinary(e.target.files[0]);
+    let date = new Date()
+    form = new FormData();
+    form.append("data", e.target.files[0]);
+    form.append("date", date);
+
+    try{
+        let response = await fetch("/projects/toosec/api/videos", {
+            method: 'POST',
+            body: form
+        })
+        alert("success")
+        console.log(response);
+    }catch(exception){
+        alert("failed");
+        console.log(exception);
+    }
+});
+
+const toBinary = file => new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onprogress = (data) => { console.log(data.loaded / data.total * 100); console.log(data);}
+    reader.readAsArrayBuffer(file);
+    reader.onload = () => resolve(reader.result);
+    reader.onerror = error => reject(error);
+})
+
+const toBase64 = file => new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onprogress = (data) => { console.log(data.loaded / data.total * 100); console.log(data);}
+    reader.readAsDataURL(file);
+    reader.onload = () => resolve(reader.result.split(",")[1]);
+    reader.onerror = error => reject(error);
+});
+</script>
