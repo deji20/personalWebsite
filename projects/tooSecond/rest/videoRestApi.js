@@ -66,7 +66,7 @@ tooSec.on("connection", async (socket) => {
     let amount = 1;
     let offset = -amount;
     socket.on("nextVid", async (videoIndex) => {
-        offset = videoIndex ?? offset + amount;
+        offset = videoIndex ? videoIndex : offset + amount;
         console.log(offset);
         let videos;
     
